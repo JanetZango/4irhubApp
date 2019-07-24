@@ -22,6 +22,7 @@ declare var firebase;
 export class ProfilePage{
   detailArray = new Array();
   popState = 0;
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,public hub :HubsProvider) {
  
   }

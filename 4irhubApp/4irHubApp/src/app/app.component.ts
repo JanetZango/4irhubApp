@@ -9,12 +9,13 @@ import { ProfilePage } from '../pages/profile/profile';
 import { SigninPage } from '../pages/signin/signin';
 import { HubsProvider } from '../providers/hubs/hubs';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
+import { timer } from 'rxjs/observable/timer';
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   rootPage:any;
-
+  showSplash = true;
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,public hub:HubsProvider) {
     platform.ready().then(() => {
       
@@ -30,6 +31,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       statusBar.styleDefault();
       splashScreen.hide();
+      timer(3000).subscribe(() => this.showSplash = false)
     });
   }
 }
