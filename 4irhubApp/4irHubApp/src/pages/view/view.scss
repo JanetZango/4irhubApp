@@ -1,7 +1,7 @@
 page-view {
-    ion-content {
-        overflow: hidden !important;
-    }
+    // ion-content {
+    //     overflow: hidden !important;
+    // }
 
     .theContainer {
         width     : 100%;
@@ -236,8 +236,8 @@ page-view {
         padding   : 5px;
         text-align: left
     }
-}
-
-.scroll-content {
+    .scroll-content {
     overflow: hidden;
 }
+}
+

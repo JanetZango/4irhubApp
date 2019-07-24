@@ -191,18 +191,18 @@ ion-slides {
 }
  
    .scroll-content {
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    position: absolute;
-    z-index: 1;
-    display: block;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    -webkit-overflow-scrolling: touch;
-    will-change: scroll-position;
-    contain: size style layout;
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     position: absolute;
+//     z-index: 1;
+//     display: block;
+//     overflow-x: hidden;
+//     overflow-y: scroll;
+    -webkit-overflow-scrolling: touch !important;
+//     will-change: scroll-position;
+//     contain: size style layout;
 }
 // .movefabt{
 //     position: absolute;
