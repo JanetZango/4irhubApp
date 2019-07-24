@@ -1,4 +1,3 @@
-
 import { Injectable, NgZone } from '@angular/core';
 import { LoadingController } from "ionic-angular";
 import { AlertController } from "ionic-angular";
@@ -499,7 +498,7 @@ export class HubsProvider {
                 wifiRange: displayDetails[keys[x]].wifiRange,
             
               }
-              this.storeOrgNames(displayDetails[keys[x]].category);
+              // this.storeOrgNames(displayDetails[keys[x]].category);
               this.orgArray.push(orgObject)
               console.log(this.orgArray)
             }
@@ -511,7 +510,119 @@ export class HubsProvider {
   }
 
   storeOrgNames(cat) {
+    if (cat != undefined)
     this.orgNames.push(cat);
+  }
+
+  getName(){
+    return this.orgNames;
+  }
+
+
+  getPrograme2() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("programmes/" + user.uid).on("value", (data: any) => {
+          if (data.val() != undefined) {
+            var progs = new Array();
+            var details = data.val();
+            var keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              var k = keys[x];
+              var progObject = {
+                openDate: details[k].openDate,
+                closeDate: details[k].closeDate,
+                name: details[k].progName,
+                progType: details[k].progType,
+                background: details[k].progBackround,
+                benefits: details[k].benefits,
+                desc: details[k].desc,
+                progStartDate: details[k].progStartDate,
+                progEndDate: details[k].progEndDate,
+                address: details[k].address,
+                contacts: details[k].contacts,
+                img: details[k].img,
+              }
+               this.storeOrgNames(details[k].progName);
+              progs.push(progObject)
+            }
+            resolve(progs);
+          }
+        })
+      })
+    })
+  }
+
+
+
+
+
+  getJobs2() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("jobs/" + user.uid).on("value", (data: any) => {
+          if (data.val() != undefined) {
+            var jobs = new Array();
+            var details = data.val();
+            var keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              var k = keys[x];
+              var jobObject = {
+                openDate: details[k].openDate,
+                closeDate: details[k].closeDate,
+                benefits: details[k].benefits,
+                desc: details[k].desc,
+                jobStartdate: details[k].jobStartdate,
+                jobEndDate: details[k].jobEndDate,
+                address: details[k].address,
+                contacts: details[k].contacts,
+                img: details[k].img,
+                name : details[k].name
+              }
+              this.storeOrgNames(details[k].name);
+              jobs.push(jobObject)
+            }
+            resolve(jobs);
+          }
+        })
+      })
+    })
+  }
+
+
+ 
+
+  getServices2() {
+    return new Promise((resolve, reject) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser;
+        firebase.database().ref("services/" + user.uid).on("value", (data: any) => {
+          if (data.val() != undefined) {
+            var services = new Array();
+            var details = data.val();
+            var keys = Object.keys(details);
+            for (var x = 0; x < keys.length; x++) {
+              var k = keys[x];
+              var serviceObject = {
+                openDate: details[k].openDate,
+                closeDate: details[k].closeDate,
+                desc: details[k].desc,
+                address: details[k].address,
+                contacts: details[k].contact,
+                img: details[k].img,
+                name: details[k].name,
+                email: details[k].email
+              }
+              this.storeOrgNames(details[k].name);
+              services.push(serviceObject)
+            }
+            resolve(services);
+          }
+        })
+      })
+    })
   }
 
 }

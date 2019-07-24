@@ -1,5 +1,5 @@
 import { Component,ElementRef, OnInit, ViewChildren } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 // import { ViewmorePage } from '../viewmore/viewmore';
 // import { SearchPage } from '../search/search';
 import { ViewChild } from '@angular/core';
@@ -8,11 +8,8 @@ import { Slides } from 'ionic-angular';
 import { ProfilePage } from '../profile/profile';
 import { SearchPage } from '../search/search';
 import { ViewmorePage } from '../viewmore/viewmore';
-
-
-
+import { ViewPage } from '../view/view';
 declare var google;
-
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -48,7 +45,6 @@ export class HomePage implements OnInit{
   CurrentName;
   userLocation = "Searching for location...";
   map;
-
   lng;
   directionsService;
   directionsDisplay;
@@ -61,7 +57,6 @@ export class HomePage implements OnInit{
   services = new Array();
   programmes = new Array();
   getOrgArry = new Array();
-
   alltypes = new Array();
   lat = -26.2620;
   name;
@@ -79,8 +74,7 @@ export class HomePage implements OnInit{
   wifi;
   wifiRange;
   key;
-
-  constructor(public navCtrl: NavController,public hub:HubsProvider) {
+  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController,public hub:HubsProvider) {
     this.hub.checkAuthState().then(data => {
       if (data == true) {
         this.logInState = true;
@@ -94,7 +88,6 @@ export class HomePage implements OnInit{
         this.img = "../../assets/download.png";
       }
     });
-
     this.hub.getJobs().then((data:any)=>{
       this.alltypes = data
       console.log(this.jobs)
@@ -107,8 +100,6 @@ export class HomePage implements OnInit{
       this.alltypes = data;
       console.log(this.services )
     })
-
-
     this.hub.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
       this.name = data.name
@@ -124,34 +115,29 @@ export class HomePage implements OnInit{
       this.contact = data.contact
       this.key = data.id
       console.log(this.name)
-    })
-
-
-
-    // this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
+    })  // this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     // })
   }
-  viewAll() {
-      // console.log(this.orgArray)
-      this.navCtrl.push(ViewmorePage)
-      for (var x = 0; x < this.alltypes.length; x++) {
-        if (name == this.alltypes[x].orgName) {
-          this.navCtrl.push(ViewmorePage, { orgObject: this.alltypes[x], loginState: this.logInState });
-          break;
-        }
+  viewAll(name) {
+    if (name == 'job'){
+        this.navCtrl.push(ViewmorePage,{type:name,list:this.jobz})
+    } 
+    else if (name == 'Programes')
+      {
+          this.navCtrl.push(ViewmorePage,{type:name,list:this.progs})
       }
-    
+    else if (name == 'Services')
+      {
+            this.navCtrl.push(ViewmorePage,{type:name,list:this.serv})   
+      }
+    else if (name == 'Wi-Fi Hotspot')
+       {
+       }
   }
   search(){
-    //this.navCtrl.push(SearchPage)
-    var search = document.getElementById('toolbar1');
-    search.style.display = "flex"
-  }
-
-  close(){
-    //this.navCtrl.push(SearchPage)
-    var search = document.getElementById('toolbar1');
-    search.style.display = "none"
+    console.log(this.names)
+    var state = 0;
+    this.navCtrl.push(SearchPage,{names:this.names, progs:this.progs, jobs:this.jobz,state:state, serv:this.serv})
   }
   //mappag switch
   mapswitch(){
@@ -173,26 +159,53 @@ export class HomePage implements OnInit{
     
     }
   }
-
-
   gotoProfile(){
     this.navCtrl.push(ProfilePage)
   }
  
-
   ngOnInit() {
     this.initMap();
-
-
   }
-
+  jobz = new Array();
+  progs = new Array();
+  serv = new Array();
+  names = new Array()
+  storeJobs(data){
+    this.jobz = data;
+  }
+  storeProgs(data){
+    this.progs = data;
+  }
+  storeSer(data){
+    this.serv = data;
+  }
+  storeNames(){
+    this.names = this.hub.getName();
+  }
+  loading;
   ionViewWillEnter() {
+    this.loading = this.loadingCtrl.create({
+      spinner: 'bubbles',
+      content: 'Please wait...',
+    });
+    this.loading.present();
+    this.hub.getJobs2().then((data1:any) =>{
+      this.storeJobs(data1);
+    })
+    this.hub.getPrograme2().then((data:any) =>{
+      this.storeProgs(data)
+    })
+    this.hub.getServices2().then((data:any)=>{
+      this.storeSer(data)
+    })
+    setTimeout(() => {
+      this.storeNames();
+    }, 2000);
     this.directionsService = new google.maps.DirectionsService;
     this.directionsDisplay = new google.maps.DirectionsService;
     this.directionsDisplay = new google.maps.DirectionsRenderer;
     this.service = new google.maps.DistanceMatrixService();
     this.geocoder = new google.maps.Geocoder;
-
     this.hub.getUserLocation().then((data: any) => {
       if (data != null) {
         this.currentLocState = true;
@@ -201,7 +214,6 @@ export class HomePage implements OnInit{
       }
     })
   }
-
   initMap() {
     setTimeout(() => {
       this.hub.getLocation(this.lat, this.long).then((data: any) => {
@@ -239,19 +251,16 @@ export class HomePage implements OnInit{
         '</div>' +
         this.userLocation
       '</div>';
-
       var infowindow = new google.maps.InfoWindow({
         content: contentString
       });
-
       marker.addListener('click', function () {
         infowindow.open(map, marker);
         map.setZoom(13);
         map.setCenter(marker.getPosition());
       });
+      this.loading.dismiss();
     }, 4000);
-
-
   }
   markers() {
     console.log(this.jobs);
@@ -266,7 +275,6 @@ export class HomePage implements OnInit{
         label: name,
         zoom: 15,
         styles: this.mapStyles
-
       });
       let infowindow = new google.maps.InfoWindow({
         content:
@@ -285,14 +293,9 @@ export class HomePage implements OnInit{
         this.map.setZoom(14);
         this.map.setCenter(showMultipleMarker.getPosition());
         infowindow.open(showMultipleMarker.get(this.map), showMultipleMarker);
-
-
       });
-
     }
   }
-
-
   mapStyles = [
     {
       "elementType": "geometry",
@@ -454,4 +457,7 @@ export class HomePage implements OnInit{
     }
   ]
 
+  view(){
+    this.navCtrl.push(ViewPage)
+  }
 }

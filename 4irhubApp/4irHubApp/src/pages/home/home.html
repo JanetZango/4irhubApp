@@ -1,229 +1,142 @@
 <ion-header>
-  <ion-toolbar id="toolbar" color="primary">
-    <ion-buttons left>
-      <button ion-button icon-only color="royal" (click)="gotoProfile()">
-        <ion-icon name="contact"></ion-icon>
-      </button>
-    </ion-buttons>
-    <ion-title text-center>Home</ion-title>
-    <ion-buttons end>
-      <button ion-button icon-only color="royal" (click)="search()">
-        <ion-icon name="search"></ion-icon>
-      </button>
-    </ion-buttons>
-    <!-- <ion-buttons end>
-      <button ion-button icon-only color="royal">
-        <ion-icon name="more"></ion-icon>
-      </button>
-    </ion-buttons> -->
+    <ion-toolbar id="toolbar" color="primary">
+      <ion-buttons left>
+        <button ion-button icon-only color="royal" (click)="gotoProfile()">
+          <ion-icon name="contact"></ion-icon>
+        </button>
+      </ion-buttons>
+      <ion-title text-center>Home</ion-title>
+      <ion-buttons end>
+        <button ion-button icon-only color="royal" (click)="search()">
+          <ion-icon name="search"></ion-icon>
+        </button>
+      </ion-buttons>
+
+    </ion-toolbar>
+    
+  
+  </ion-header>
+  
+  <ion-toolbar id="toolbar1" color="primary" style="display: none;">
+    <ion-searchbar  (input)="getItems($event)"></ion-searchbar>
+    <ion-buttons text-right end>
+        <button ion-button icon-only color="royal" (click)="close()">
+          <ion-icon name="close"></ion-icon>
+        </button>
+      </ion-buttons>
   </ion-toolbar>
   
+  <ion-content class="backgroung" id="maincontent">
+    <div class="test1"></div>
+    <div class="test"></div>
+  
+    <h4 padding-right text-right> Hi Mxolisi </h4>
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h3 padding-left>Categories</h3>
+        </ion-col>
+        <ion-col>
+        
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <div class="line"></div>
+    <div class="cards" id="cardsHide">
+      <ion-slides class="slides" slidesPerView="2.5" centeredSlides="false">
+        <ion-slide *ngFor='let a of icons'>
+          <div class="cards">
+            <ion-card class="card21" (click)='viewAll(a.name)'>
+              <ion-icon name="{{a.image}}" class="iconsizetop"></ion-icon>
+              <h6><b>{{a.name}}</b></h6>
+            </ion-card>
+  
+          </div>
+          <br>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  
+  
+  
+  
+  
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h3 padding-left>What we offer</h3>
+        </ion-col>
+        <!-- <ion-col>
+          <h5 text-end padding-right padding-top (click)='viewAll()'>See All</h5>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+    <div class="line"></div>
+  
+    <ion-list  *ngFor="let a of getOrgArry">
+      <ion-card class="card2">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="{{a.downloadurlLogo}}">
+          </ion-thumbnail>
+          <h2>{{a.name}}</h2>
+          <p>{{a.background}}</p>
+          <button ion-button clear item-end (click)="View()">View</button>
+        </ion-item>
+      </ion-card>
+      </ion-list>
+  
 
-</ion-header>
-
-<ion-toolbar id="toolbar1" color="primary" style="display: none;">
-  <ion-searchbar  (input)="getItems($event)"></ion-searchbar>
-  <ion-buttons text-right end>
-      <button ion-button icon-only color="royal" (click)="close()">
-        <ion-icon name="close"></ion-icon>
+  
+    <ion-fab bottom right>
+      <button ion-fab mini (click)='mapswitch()' class="mapfab">
+        <ion-icon name="map"></ion-icon>
       </button>
-    </ion-buttons>
-</ion-toolbar>
-
-<ion-content class="backgroung" id="maincontent">
-  <div class="test1"></div>
-  <div class="test"></div>
-
-  <h4 padding-right text-right> Hi Mxolisi </h4>
-
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h3 padding-left>Categories</h3>
-      </ion-col>
-      <ion-col>
-        <!-- <h5 text-end padding-right padding-top (click) ='viewAll()'>See All</h5> -->
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <div class="line"></div>
-  <div class="cards" id="cardsHide">
-    <ion-slides class="slides" slidesPerView="2.5" centeredSlides="false">
-      <ion-slide *ngFor='let a of icons'>
-        <div class="cards">
-          <ion-card class="card21" (click)='viewAll()'>
-            <ion-icon name="{{a.image}}" class="iconsizetop"></ion-icon>
-            <h6><b>{{a.name}}</b></h6>
-          </ion-card>
-
-        </div>
-        <br>
-      </ion-slide>
-    </ion-slides>
-  </div>
-
-
-
-
-
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h3 padding-left>What we offer</h3>
-      </ion-col>
-      <!-- <ion-col>
-        <h5 text-end padding-right padding-top (click)='viewAll()'>See All</h5>
-      </ion-col> -->
-    </ion-row>
-  </ion-grid>
-  <div class="line"></div>
-  <!-- <ion-grid>
-
-    <ion-row>
-      <ion-col col-6>
-
-        <h3 padding-left>Jobs</h3>
-        <div class="card">
-          <ion-card class="card2" padding (click)="viewAll()">
-            <ion-icon name="ios-briefcase" class="iconsize"></ion-icon>
-            <br>
-
-            <h6>
-              <b>
-                Nine Inch Nails Live
-              </b>
-            </h6>
-            <p>
-              500+jobs
-          </ion-card>
-        </div>
-      </ion-col>
-      <ion-col>
-        <h3 padding-left>Programes</h3>
-        <div class="card">
-          <ion-card class="card2" padding (click)='viewAll()'>
-            <ion-icon name="pie" class="iconsize"></ion-icon>
-            <br>
-
-            <h6>
-              <b>
-                Nine Inch Nails Live
-              </b>
-            </h6>
-            <p>
-              500+Programes
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <h3 padding-left>Services</h3>
-        <div class="card">
-          <ion-card class="card2" padding (click)='viewAll()'>
-            <ion-icon name="people" class="iconsize"></ion-icon>
-            <br>
-            <div class="grayarea">
-              <h6>
-                <b>
-                  Nine Inch Nails Live
-                </b>
-              </h6>
-              <p>
-                500+Services
-            </div>
-
-          </ion-card>
-        </div>
-      </ion-col>
-      <ion-col>
-        <h3 padding-left>Wi-Fi</h3>
-        <div class="card">
-          <ion-card class="card2" padding (click)='viewAll()'>
-            <ion-icon name="ios-wifi" class="iconsize"></ion-icon>
-            <br>
-
-            <h6>
-              <b>
-                Nine Inch Nails Live
-              </b>
-            </h6>
-            <p>
-              500+Wi-Fi
-            </p>
-
-          </ion-card>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid> -->
-  <ion-list  *ngFor="let a of getOrgArry">
-    <ion-card class="card2">
-      <ion-item>
-        <ion-thumbnail item-start>
-          <img src="{{a.downloadurlLogo}}">
-        </ion-thumbnail>
-        <h2>{{a.name}}</h2>
-        <p>{{a.background}}</p>
-        <button ion-button clear item-end>View</button>
-      </ion-item>
-    </ion-card>
-    </ion-list>
-
-  <!-- <ion-card *ngFor="let a of getOrgArry">
-    <p>{{a.name}}</p>
-    <p>{{a.background}}</p>
-    <img src="{{a.downloadurlLogo}}"> 
-
-  </ion-card> -->
-
-  <ion-fab bottom right>
-    <button ion-fab mini (click)='mapswitch()' class="mapfab">
-      <ion-icon name="map"></ion-icon>
-    </button>
-
-  </ion-fab>
-
-</ion-content>
-
-<!---------------------------------------------MAP page -------------------------------------------------------------->
-<ion-content id="mapcontent" style="display: none;">
-
-  <div #map id="map" id="theMap"></div>
-
-
-
-
-
-  <div class="cards" id="cardsHide">
-    <ion-slides class="slidesbottom" slidesPerView="1.3" centeredSlides="true">
-      <ion-slide *ngFor="let a of getOrgArry; let i = index  ">
-
-        <div class="cardsbottom">
-          <ion-card class="cardbottom">
-            <img src="{{a.downloadurlLogo}}" class="imgsbottom">
-            <ion-item>
-              <h2 text-left>{{a.name}}</h2>
-              <p text-left>{{a.background}}</p>
-              <ion-grid no-padding>
-                <ion-row no-padding>
-                  <ion-col class="fruits" *ngFor="let b of icons">
-                    <ion-icon name="{{b.image}}" class="iconsizebottom"></ion-icon>
-                  </ion-col>
-                </ion-row>
-              </ion-grid>
-            </ion-item>
-          </ion-card>
-        </div>
-      </ion-slide>
-    </ion-slides>
-  </div>
-
-
-  <ion-fab bottom right>
-    <button ion-fab mini (click)="mapswitch()" class="mapfab">
-      <ion-icon name="map"></ion-icon>
-    </button>
-
-  </ion-fab>
-</ion-content>
+  
+    </ion-fab>
+  
+  </ion-content>
+  
+  <!---------------------------------------------MAP page -------------------------------------------------------------->
+  <ion-content id="mapcontent" style="display: none;">
+  
+    <div #map id="map" id="theMap"></div>
+  
+  
+  
+  
+  
+    <div class="cards" id="cardsHide">
+      <ion-slides class="slidesbottom" slidesPerView="1.3" centeredSlides="true">
+        <ion-slide *ngFor="let a of getOrgArry; let i = index  ">
+  
+          <div class="cardsbottom">
+            <ion-card class="cardbottom">
+              <img src="{{a.downloadurlLogo}}" class="imgsbottom">
+              <ion-item>
+                <h2 text-left>{{a.name}}</h2>
+                <p text-left>{{a.background}}</p>
+                <ion-grid no-padding>
+                  <ion-row no-padding>
+                    <ion-col class="fruits" *ngFor="let b of icons">
+                      <ion-icon name="{{b.image}}" class="iconsizebottom"></ion-icon>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+              </ion-item>
+            </ion-card>
+          </div>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  
+  
+    <ion-fab bottom right>
+      <button ion-fab mini (click)="mapswitch()" class="mapfab">
+        <ion-icon name="map"></ion-icon>
+      </button>
+  
+    </ion-fab>
+  </ion-content>
+  
