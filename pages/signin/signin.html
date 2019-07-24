@@ -1,0 +1,50 @@
+<!--
+  Generated template for the SigninPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-content class="cover">
+  <div class="background">
+    <div class="test1"></div>
+    <div class="test"></div>
+    <div class="left" padding>
+      <!-- <h2 text-center>Welcome please Login</h2> -->
+      <img class="logo" src="../../assets/imgs/407893.png">
+      <!--<h1 text-center >4IR HUB</h1>
+        <p text-center> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt soluta iure, eos qui hic accusantium laboriosam dolore nisi? Nobis esse in adipisci repellat quo eum ipsa deserunt vitae quibusdam necessitatibus!</p> -->
+      <div class="login">
+        <h1 text-center>LogIn</h1>
+        <br>
+        <div class="logininputdiv">
+          <ion-list>
+            <ion-item no-lines class="inputs">
+              <ion-input type="email" placeholder="Email" name="email" #email="ngModel"  ngModel required></ion-input>
+              <span style="color: red" *ngIf="!email.valid && email.touched" class="help-block">Please enter your email</span>
+            </ion-item>
+          </ion-list>
+          <ion-list>
+            <ion-item no-lines class="inputs">
+              <ion-input type="password" placeholder="Password" name="password" #password="ngModel" ngModel required> </ion-input>
+              <span style="color: red" *ngIf="!password.valid && password.touched" class="help-block">Please enter password</span>
+            </ion-item>
+          </ion-list>
+          <button block round ion-button block color="btn" (click)="SignIn(email.value,password.value)">Login</button>
+          <br>
+          <button outline block round ion-button color="btn" (click)="switchlogin()">Sign UP</button>
+          <button outline clear block ion-button color="btn" (click)="forgotpassword()">Forgot Password</button>
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+  <!-- 2a0961
+  521dda7 -->
+
+
+</ion-content>

@@ -1,0 +1,382 @@
+<ion-content>
+  <div class="theContainer" id="forProgrammes">
+      <div class="coverImage">
+        <img id="myCover" src="{{img}}" alt="">
+        <img id="myLogo" src="../../assets/imgs/logo logo.jpg" alt="">
+        <div id="date-of-issue"></div>
+      </div>
+      <div class="view-body">
+        <div class="splitter"></div>
+        <div id="name-of-thing">
+        {{orgType}}
+        </div>
+        <p>{{type}}</p>
+        <div id="name-of-organisation">
+          {{name}}
+        </div>
+        <div id="region">
+          Soweto
+        </div>
+        <a href="https://google.com">website.com</a>
+        <div id="description">
+          <b>Background</b> <br>
+          {{background}}
+        </div>
+        <div id="read-more" (click)="toggleShowMore()">{{readMore}} </div>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+  
+              <div>
+                <ion-icon name="call"></ion-icon>
+                <p>Call</p>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-icon name="navigate"></ion-icon>
+                <p>Get Directions </p>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-icon name="paper"></ion-icon>
+                <p>Apply</p>
+              </div>
+  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div padding id="seg-buttons">
+          <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="Services">
+              More information
+            </ion-segment-button>
+            <ion-segment-button value="Reviews">
+              Reviews
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+        <div [ngSwitch]="pet" id="segmentShow">
+          <div id="show-from-segment1" *ngSwitchCase="'Services'" padding>
+            <b>Benefits</b>
+            <p>
+             {{bene}}
+            </p>
+            <b>Services</b>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, velit distinctio! Corporis ipsam
+              doloremque delectus facilis. Laborum, suscipit exercitationem. Voluptatum accusantium voluptas fugiat
+              perspiciatis eum soluta numquam provident quae, illo voluptatem optio, voluptate aspernatur laboriosam
+              exercitationem, libero qui dolor eaque.</p>
+            <b>Address</b>
+            <p>{{address}}</p>
+            <div class="contact">
+              <b>Contact Details</b>
+              <p><b>Phone</b></p>
+              <p id="contactDetail">{{cell}}</p>
+              <p><b>Email</b></p>
+              <p id="contactDetail">{{email}}</p>
+            </div>
+          </div>
+          <div id="show-from-segment2" *ngSwitchCase="'Reviews'" padding>
+            <div id="card">
+              <div class="star-rating">
+                <ion-icon name="star"></ion-icon> 5
+              </div>
+              <div id="user">
+                <div>
+                  <img src="../../assets/imgs/Wallpaper.jpg" alt="">
+                </div>
+                <div>
+                  <div class="user-comment-info">
+                    <p><b>John Doe</b></p>
+                    <p id="timestamp">Just now</p>
+                  </div>
+                </div>
+              </div>
+              <div id="comment">
+                <div>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe, maxime?
+                </div>
+                <div>
+  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <div class="theContainer" id="forJobs">
+    <div class="coverImage">
+      <img id="myCover" src="../../assets/imgs/Wallpaper.jpg" alt="">
+      <img id="myLogo" src="../../assets/imgs/logo logo.jpg" alt="">
+      <div id="date-of-issue">2 days ago</div>
+    </div>
+    <div class="view-body">
+      <div class="splitter"></div>
+      <div id="name-of-thing">
+        Photographer Wanted
+      </div>
+      <p>Contract</p>
+      <div id="name-of-organisation">
+        Legion Media Monarchy (PTY) Ltd
+      </div>
+      <div id="region">
+        Soweto
+      </div>
+      <a href="https://google.com">website.com</a>
+      <div id="description">
+        <b>Background</b> <br>
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+        magnamLorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+        magnamLorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+        magnam nobis in voluptatum repellendus quasi impedit delectus consequatur harum rerum? Minima, aut dolorum.
+      </div>
+      <div id="read-more" (click)="toggleShowMore()">{{readMore}} </div>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+
+            <div>
+              <ion-icon name="call"></ion-icon>
+              <p>Call</p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-icon name="navigate"></ion-icon>
+              <p>Get Directions </p>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-icon name="paper"></ion-icon>
+              <p>Apply</p>
+            </div>
+
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <div padding id="seg-buttons">
+        <ion-segment [(ngModel)]="pet">
+          <ion-segment-button value="Services">
+            About Job
+          </ion-segment-button>
+          <ion-segment-button value="Reviews">
+            Requirements
+          </ion-segment-button>
+        </ion-segment>
+      </div>
+      <div [ngSwitch]="pet" id="segmentShow">
+        <div id="show-from-segment1" *ngSwitchCase="'Services'" padding>
+          <b>Benefits</b>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos explicabo quis modi, ipsa, deleniti
+            iste quidem sapiente sequi corrupti ad fugit excepturi sunt saepe rerum quasi voluptatem placeat architecto.
+            Sint.
+          </p>
+          <b>Responsibilities</b>
+          <p>
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos explicabo quis modi, ipsa, deleniti
+            iste quidem sapiente sequi corrupti ad fugit excepturi sunt saepe rerum quasi voluptatem placeat architecto.
+            Sint.
+          </p>
+          <b>Address</b>
+          <p>4877 Ugago Street Protea Glen Ext 3 1819</p>
+          <div class="contact">
+            <b>Contact Details</b>
+            <p><b>Phone</b></p>
+            <p id="contactDetail">0813917127</p>
+            <p><b>Email</b></p>
+            <p id="contactDetail">spazgrafficz@outlook.com</p>
+          </div>
+        </div>
+        <div id="show-from-segment1" *ngSwitchCase="'Reviews'" padding>
+
+          <b>Requirements</b>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, velit distinctio! Corporis ipsam
+            doloremque delectus facilis. Laborum, suscipit exercitationem. Voluptatum accusantium voluptas fugiat
+            perspiciatis eum soluta numquam provident quae, illo voluptatem optio, voluptate aspernatur laboriosam
+            exercitationem, libero qui dolor eaque.</p>
+          <b>Qualifications</b>
+          <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, velit distinctio! Corporis ipsam
+            doloremque delectus facilis. Laborum, suscipit exercitationem. Voluptatum accusantium voluptas fugiat
+            perspiciatis eum soluta numquam provident quae, illo voluptatem optio, voluptate aspernatur laboriosam
+            exercitationem, libero qui dolor eaque.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="theContainer" id="forJobs">
+      <div class="coverImage">
+        <img id="myCover" src="../../assets/imgs/Wallpaper.jpg" alt="">
+        <img id="myLogo" src="../../assets/imgs/logo logo.jpg" alt="">
+        <div id="date-of-issue">2 days ago</div>
+        <div class="apply">
+          APPLY
+        </div>
+      </div>
+      <div class="view-body">
+        <div class="splitter"></div>
+        <div id="name-of-thing">
+          Senior Developer
+        </div>
+        <p>Contract</p>
+        <div id="name-of-organisation">
+          MWEB South Africa
+        </div>
+        <div id="region">
+          Soweto
+        </div>
+        <a href="https://google.com">website.com</a>
+        <div id="description">
+          <b>Background</b> <br>
+          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+          magnamLorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+          magnamLorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+          magnam nobis in voluptatum repellendus quasi impedit delectus consequatur harum rerum? Minima, aut dolorum.
+        </div>
+        <div id="read-more" (click)="toggleShowMore()">{{readMore}} </div>
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+  
+              <div>
+                <ion-icon name="call"></ion-icon>
+                <p>Call</p>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-icon name="navigate"></ion-icon>
+                <p>Get Directions </p>
+              </div>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-icon name="paper"></ion-icon>
+                <p>Apply</p>
+              </div>
+  
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <div padding id="seg-buttons">
+          <ion-segment [(ngModel)]="pet">
+            <ion-segment-button value="Services">
+              About Job
+            </ion-segment-button>
+            <ion-segment-button value="Reviews">
+              Requirements
+            </ion-segment-button>
+          </ion-segment>
+        </div>
+        <div [ngSwitch]="pet" id="segmentShow">
+          <div id="show-from-segment1" *ngSwitchCase="'Services'" padding>
+              <b>Benefits</b>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos explicabo quis modi, ipsa, deleniti
+                iste quidem sapiente sequi corrupti ad fugit excepturi sunt saepe rerum quasi voluptatem placeat architecto.
+                Sint.
+              </p>
+              <b>Responsibilities</b>
+              <p>
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Dignissimos explicabo quis modi, ipsa, deleniti
+                iste quidem sapiente sequi corrupti ad fugit excepturi sunt saepe rerum quasi voluptatem placeat architecto.
+                Sint.
+              </p>
+            <b>Address</b>
+            <p>4877 Ugago Street Protea Glen Ext 3 1819</p>
+            <div class="contact">
+              <b>Contact Details</b>
+              <p><b>Phone</b></p>
+              <p id="contactDetail">0813917127</p>
+              <p><b>Email</b></p>
+              <p id="contactDetail">spazgrafficz@outlook.com</p>
+            </div>
+          </div>
+          <div id="show-from-segment1" *ngSwitchCase="'Reviews'" padding>
+
+              <b>Requirements</b>
+              <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, velit distinctio! Corporis ipsam
+                doloremque delectus facilis. Laborum, suscipit exercitationem. Voluptatum accusantium voluptas fugiat
+                perspiciatis eum soluta numquam provident quae, illo voluptatem optio, voluptate aspernatur laboriosam
+                exercitationem, libero qui dolor eaque.</p>
+                <b>Qualifications</b>
+                <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Veritatis, velit distinctio! Corporis ipsam
+                  doloremque delectus facilis. Laborum, suscipit exercitationem. Voluptatum accusantium voluptas fugiat
+                  perspiciatis eum soluta numquam provident quae, illo voluptatem optio, voluptate aspernatur laboriosam
+                  exercitationem, libero qui dolor eaque.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="theContainer" id="forWiFi">
+        <div class="coverImage">
+          <img id="myCover" src="../../assets/imgs/Wallpaper.jpg" alt="">
+          <img id="myLogo" src="../../assets/imgs/logo logo.jpg" alt="">
+          <div id="date-of-issue">2 days ago</div>
+        </div>
+        <div class="view-body">
+          <div class="splitter"></div>
+          <div id="name-of-thing">
+            Senior Developer
+          </div>
+          <p>Contract</p>
+          <div id="name-of-organisation">
+            MWEB South Africa
+          </div>
+          <div id="region">
+            Soweto
+          </div>
+          <a href="https://google.com">website.com</a>
+          <div id="description">
+            <b>Background</b> <br>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+            magnamLorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+            magnamLorem ipsum dolor, sit amet consectetur adipisicing elit. Cupiditate dolore hic sequi esse quam. Dolor ex,
+            magnam nobis in voluptatum repellendus quasi impedit delectus consequatur harum rerum? Minima, aut dolorum.
+          </div>
+          <div id="read-more" (click)="toggleShowMore()">{{readMore}} </div>
+          <ion-grid>
+            <ion-row>
+              <ion-col>
+    
+                <div>
+                  <ion-icon name="call"></ion-icon>
+                  <p>Call</p>
+                </div>
+              </ion-col>
+              <ion-col>
+                <div>
+                  <ion-icon name="navigate"></ion-icon>
+                  <p>Get Directions </p>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <div id="segmentShow">
+            <div id="show-from-segment1" padding>
+                <b>Availability</b>
+                <div id="availability">
+                  <ion-icon></ion-icon>
+                </div>
+                <p>
+                  The WiFi is free to connect for the first 200MB
+                </p>
+                
+              <b>Address</b>
+              <p>4877 Ugago Street Protea Glen Ext 3 1819</p>
+              <div class="contact">
+                <b>Contact Details</b>
+                <p><b>Phone</b></p>
+                <p id="contactDetail">0813917127</p>
+                <p><b>Email</b></p>
+                <p id="contactDetail">spazgrafficz@outlook.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </ion-content>

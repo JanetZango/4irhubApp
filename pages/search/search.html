@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color='primary'>
+    <ion-searchbar id="search" #searchz (ionInput)="getItems($event)"  [(ngModel)]="searchbar"></ion-searchbar>
+  </ion-navbar>
+</ion-header>
+
+  <ion-item no-lines *ngFor="let item of items; let i=index">
+    <p>{{item}}</p>
+  </ion-item>
+
+<ion-content>
+  <ion-list class="searchitem">
+    <ion-item  *ngFor="let item of items" (click)="serc(item)">
+      {{ item }}
+    </ion-item>
+  </ion-list>
+
+
+
+</ion-content>

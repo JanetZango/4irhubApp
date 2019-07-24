@@ -1,0 +1,78 @@
+<!--
+  Generated template for the SignupPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+
+<ion-content padding>
+  <div class="background">
+      <div class="test1"></div>
+      <div class="test"></div>
+      <div class="left" padding>
+        <!-- <h2 text-center>Welcome please Login</h2> -->
+        <img class="logo" src="../../assets/imgs/407893.png">
+        <!--<h1 text-center >4IR HUB</h1>
+          <p text-center> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt soluta iure, eos qui hic accusantium laboriosam dolore nisi? Nobis esse in adipisci repellat quo eum ipsa deserunt vitae quibusdam necessitatibus!</p> -->
+        <!-- <div class="login">
+          <h1 text-center>LogIn</h1>
+          <br>
+          <div class="logininputdiv">
+            <ion-list>
+              <ion-item no-lines class="inputs">
+                <ion-input type="email" placeholder="Email" [(ngModel)]="email" gModel required (click)='logohide()'></ion-input>
+              </ion-item>
+            </ion-list>
+         
+            <ion-list>
+              <ion-item no-lines class="inputs">
+                <ion-input type="password" placeholder="Password" [(ngModel)]="password" gModel required> </ion-input>
+              </ion-item>
+  
+            </ion-list>
+  
+            <button block round ion-button block color="btn" (click)="Login()">Login</button>
+  
+  
+            <br>
+  
+            <button outline block round ion-button color="btn" (click)="switchlogin()">Sign UP</button>
+            <button outline clear block ion-button color="btn" (click)="forgotpassword()">Forgot Password</button>
+          </div>
+  
+        </div> -->
+  
+        <div class="signup">
+          <h1 text-center>SignUp</h1>
+          <br>
+          <div class="logininputdiv">
+            <ion-list>
+              <ion-item class="inputs">
+                <ion-input placeholder="Email" type="email" name="email" #email="ngModel" ngModel required></ion-input>
+                <span class="help-block" style="color: red" *ngIf="!email.valid && email.touched" >Please enter your email</span>
+              </ion-item>
+            </ion-list>
+              <ion-list>
+  
+              <ion-item class="inputs">
+                <ion-input type="password" placeholder="Password" name="password" #password="ngModel"  ngModel required> </ion-input>
+                <span  class="help-block" style="color: red" *ngIf="!password.valid && password.touched">Please enter your password</span>
+              </ion-item>
+            </ion-list>
+  
+            <button round block ion-button color="btn" (click)="SignUp(email.value,password.value)">SignUp</button>
+            <br>
+            <button outline block round ion-button color="btn" (click)="switchlogin()">Login</button>
+  
+          </div>
+        </div>
+  
+  
+      </div>
+  
+
+    </div>
+    <!-- 2a0961
+    521dda7 -->
+</ion-content>

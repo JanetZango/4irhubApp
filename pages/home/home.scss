@@ -1,0 +1,240 @@
+page-home {
+    .backgroung{
+        background-color: rgb(240, 240, 240)
+    }
+    :focus, :active {
+      
+        outline-color: red;
+        outline-style: none;
+        outline-width: 2px;
+    }
+    .col{
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+    }
+    .grid {
+     
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        // height: 100%;
+    }
+    .row {
+    
+        height: 26%;
+    }
+    .line{
+        margin: 0 auto;
+        width: 95%;
+        border-bottom-color: rgb(156, 156, 156);
+        border-bottom-width: 1px;
+        border-bottom-style: solid
+    }
+    h3,h5{
+        color: #000000;
+        // padding: 0%;
+         margin: 0%;
+    }
+    h3{
+        padding-top: 6%
+    }
+    // h1{
+    //      padding-top: 2%;
+    //      padding-bottom: 0%;
+    //      margin: 0%; 
+    // }
+    .cards{
+        width: 100%;
+        //background-color: rgb(245, 245, 245)
+    }
+    .card2{
+        height: 100%;
+        //width: 100%;
+        border-radius: 10px;
+       // display: flex;
+        box-shadow: 0px 15px 20px -15px rgb(53, 53, 53); 
+       //background-color: rgba(255, 255, 255, 0.892)
+    }
+    .card21{
+        height: 15vh;
+        border-radius: 8px;
+        box-shadow: 0px 15px 20px -15px #111; 
+   
+     
+    }
+    .imgs{
+        width: 100%;
+        height: 100%;
+        border-radius: 10px;
+        //box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0px 1px 2px 0px    rgba(0, 0, 0, 0.3);
+        // background-position: center;
+        // background-size: cover;
+        // background-repeat: no-repeat;
+        object-fit: cover
+    }
+    .card-title-md {
+        display: block;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        color: #222;
+        margin: 0px 0;
+        padding: 0px 0;
+        // position: absolute;
+        // top: 30%;
+        // left: 50%;
+        // transform: translate(-50%,-50%);
+        // color: white
+   
+    }
+    .card-content-md {
+        padding: 0px 0px;
+        font-size: 1.2rem;
+        line-height: 1;
+        // position: absolute;
+        // top: 50%;
+        // left: 50%;
+        // transform: translate(-50%,-50%);
+        // color: white
+    }
+    .item-md ion-thumbnail ion-img, .item-md ion-thumbnail img {
+        width: 90px;
+        height: 80px;
+    }
+    .thumbnailion{
+        padding: 0%
+    }
+    .searchbar-md .searchbar-input {
+        padding: 6px 55px;
+        border-radius: 100px;
+        background-position: left 8px center;
+        height: auto;
+        font-size: 1.6rem;
+        font-weight: 400;
+        line-height: 3rem;
+        color: #141414;
+        background-color: rgb(255, 255, 255);
+        -webkit-box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+    }
+    
+    .iconsize{
+        font-size: 5em;
+        color: #5abaff;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-shadow: 0px 15px 20px -15px rgb(53, 53, 53); 
+    }
+    .iconsizetop{
+        font-size: 4em;
+        color: #0076ca;
+        margin: auto auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 10%;
+        
+    }
+   
+    #theMap{
+        width: 100%;
+        height:100%;
+        // z-index: -1;
+       
+        
+       }
+       #map {
+        width: 100%;
+        height: 100%;
+      }
+    //    .cardsbottom{
+    //        width: 100%;
+    //    }
+  
+       .slidesbottom{
+            position: absolute;
+            top: 78%;
+          
+       }
+    
+       .imgsbottom{
+           width: 40%;
+           height: 100px;
+       }
+  
+  
+    .cardbottom{
+        border-radius: 8px;
+        display: flex;
+        box-shadow: 0px 0px 10px    rgba(0, 0, 0, 0.514)
+    }
+    ion-card-title{
+        padding:0px;
+    }
+   
+ion-slides {
+    //display: block;
+    width: 100%;
+    height: 20%; 
+}
+.fruits{
+    display: flex;
+}
+ 
+//    .scroll-content {
+//     left: 0;
+//     right: 0;
+//     top: 0;
+//     bottom: 0;
+//     position: absolute;
+//     z-index: 1;
+//     display: block;
+//     overflow-x: hidden;
+//     overflow-y: hidden;
+//     -webkit-overflow-scrolling: touch;
+//     will-change: scroll-position;
+//     contain: size style layout;
+// }
+// .movefabt{
+//     position: absolute;
+//     top: 70vh;
+//     z-index: 9999;
+// }
+// .movefabb{
+//     position: absolute;
+//     top: 78vh;
+//     z-index: 9999;
+    
+// }
+// #hidekilos{
+//     display: none;
+// }
+// #hidetime{
+//     display: none;
+// }
+// .card-md .item-md.item-block .item-inner {
+//     border: 0;
+//     padding-left: 10px;
+// }
+.iconsizebottom{
+    font-size: 2rem
+}
+.mapfab{
+    background-image: linear-gradient(to bottom right, rgb(0, 38, 255), rgb(0, 247, 255));
+}
+h4{
+   color: #000000
+}
+.card2:active {
+    background: rgba(194, 251, 255, 0.3);
+}
+.card21:active {
+    background: rgba(198, 194, 255, 0.3);
+}
+   
+}
