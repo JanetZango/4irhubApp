@@ -34,7 +34,7 @@ export class ViewPage {
     this.background = this.data.background;
     this.img = this.data.img;
     this.name = this.data.name;
-    this.cell = this.data.contacts;
+    this.cell = this.data.contact;
     this.desc = this.data.desc;
     this.bene = this.data.benefits;
     this.address = this.data.address;

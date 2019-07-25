@@ -48,12 +48,16 @@ export class EditprofilePage {
   }
 
   ngOnInit() {
+    this.name, this.email, this.downloadurl,this.address,this.contact,this.DOB,this.age,this.highSchoolGradYear
     this.hub.retrieve().on('value', (data: any) => {
       let details = data.val();
       this.name = details.name;
       this.email = details.email;
       this.address = details.address;
-      this.surname = details.surname;
+      this.contact = details.contact;
+      this.DOB = details.DOB;
+      this.age = details.age;
+      this.highSchoolGradYear = details.highSchoolGradYear;
       this.downloadurl = details.downloadurl;
       this.tempImg = details.downloadurl;
       if (this.address == null || this.address == undefined) {
