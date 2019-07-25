@@ -17,6 +17,8 @@ import { SearchPage } from '../pages/search/search';
 import { ViewmorePage } from '../pages/viewmore/viewmore';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
 import { EditprofilePage } from '../pages/editprofile/editprofile';
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 
 
 
@@ -30,8 +32,9 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
     SignupPage,
     SearchPage,
     ViewmorePage,
-    OnboardingPage,  
-      EditprofilePage
+    OnboardingPage,
+    EditprofilePage,
+
   ],
   imports: [
     BrowserModule,
@@ -53,11 +56,13 @@ import { EditprofilePage } from '../pages/editprofile/editprofile';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    CallNumber,
+    EmailComposer,
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     HubsProvider,
     Geolocation,
     Keyboard
- 
+
   ]
 })
-export class AppModule {}
+export class AppModule { }

@@ -79,12 +79,14 @@ export class HomePage implements OnInit{
     this.hub.checkAuthState().then(data => {
       if (data == true) {
         this.logInState = true;
-        this.hub.getProfile().then((data: any) => {
-          console.log(data)
-          this.img = data.downloadurl;
-          this.CurrentName = data.name;
-          console.log(this.CurrentName)
-          console.log(this.img)
+        this.hub.retrieve().on('value', (data: any) => {
+          let details = data.val();
+          console.log(details)
+          console.log(this.name)
+          this.name = details.name;
+          this.downloadurl = details.downloadurl;
+ 
+        
         })
       }
       else if (data == false) {
