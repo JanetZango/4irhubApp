@@ -88,18 +88,18 @@ export class HomePage implements OnInit{
         this.img = "../../assets/download.png";
       }
     });
-    this.hub.getJobs().then((data:any)=>{
-      this.alltypes = data
-      console.log(this.jobs)
-    })
-    this.hub.getPrograme().then((data:any)=>{
-      this.alltypes = data
-      console.log(this.programmes)
-    })
-    this.hub.getServices().then((data:any)=>{
-      this.alltypes = data;
-      console.log(this.services )
-    })
+    // this.hub.getJobs().then((data:any)=>{
+    //   this.alltypes = data
+    //   console.log(this.jobs)
+    // })
+    // this.hub.getPrograme().then((data:any)=>{
+    //   this.alltypes = data
+    //   console.log(this.programmes)
+    // })
+    // this.hub.getServices().then((data:any)=>{
+    //   this.alltypes = data;
+    //   console.log(this.services )
+    // })
     this.hub.getAllOrganizations().then((data: any) => {
       this.getOrgArry = data
       this.name = data.name
@@ -178,6 +178,7 @@ export class HomePage implements OnInit{
   }
   storeSer(data){
     this.serv = data;
+    console.log(data)
   }
   storeNames(){
     this.names = this.hub.getName();
@@ -189,13 +190,13 @@ export class HomePage implements OnInit{
       content: 'Please wait...',
     });
     this.loading.present();
-    this.hub.getJobs2().then((data1:any) =>{
+    this.hub.getJobs().then((data1:any) =>{
       this.storeJobs(data1);
     })
-    this.hub.getPrograme2().then((data:any) =>{
+    this.hub.getPrograme().then((data:any) =>{
       this.storeProgs(data)
     })
-    this.hub.getServices2().then((data:any)=>{
+    this.hub.getServices().then((data:any)=>{
       this.storeSer(data)
     })
     setTimeout(() => {
@@ -457,7 +458,7 @@ export class HomePage implements OnInit{
     }
   ]
 
-  view(){
-    this.navCtrl.push(ViewPage)
+  view(x){
+    this.navCtrl.push(ViewPage,{obj:x})
   }
 }
