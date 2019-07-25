@@ -21,7 +21,7 @@ export class MyApp {
       
       hub.checkstate().then((data: any) => {
         if (data == 1) {
-          this.rootPage = HomePage
+          this.rootPage = SigninPage
         }
         else {
           this.rootPage = SigninPage

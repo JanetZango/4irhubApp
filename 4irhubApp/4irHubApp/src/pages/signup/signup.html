@@ -12,41 +12,19 @@
       <div class="test"></div>
       <div class="left" padding>
         <!-- <h2 text-center>Welcome please Login</h2> -->
-        <img class="logo" src="../../assets/imgs/407893.png">
-        <!--<h1 text-center >4IR HUB</h1>
-          <p text-center> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt soluta iure, eos qui hic accusantium laboriosam dolore nisi? Nobis esse in adipisci repellat quo eum ipsa deserunt vitae quibusdam necessitatibus!</p> -->
-        <!-- <div class="login">
-          <h1 text-center>LogIn</h1>
-          <br>
-          <div class="logininputdiv">
-            <ion-list>
-              <ion-item no-lines class="inputs">
-                <ion-input type="email" placeholder="Email" [(ngModel)]="email" gModel required (click)='logohide()'></ion-input>
-              </ion-item>
-            </ion-list>
-         
-            <ion-list>
-              <ion-item no-lines class="inputs">
-                <ion-input type="password" placeholder="Password" [(ngModel)]="password" gModel required> </ion-input>
-              </ion-item>
-  
-            </ion-list>
-  
-            <button block round ion-button block color="btn" (click)="Login()">Login</button>
-  
-  
-            <br>
-  
-            <button outline block round ion-button color="btn" (click)="switchlogin()">Sign UP</button>
-            <button outline clear block ion-button color="btn" (click)="forgotpassword()">Forgot Password</button>
-          </div>
-  
-        </div> -->
+        <img  [hidden]="keyboard.isOpen()" class="logo" src="../../assets/imgs/407893.png">
+      
   
         <div class="signup">
-          <h1 text-center>SignUp</h1>
+          <h1 [hidden]="keyboard.isOpen()" text-center>SignUp</h1>
           <br>
           <div class="logininputdiv">
+              <ion-list>
+                  <ion-item class="inputs">
+                    <ion-input placeholder="Username" type="email" name="email" #email="ngModel" ngModel required></ion-input>
+                    <span class="help-block" style="color: red" *ngIf="!email.valid && email.touched" >Please enter your Username</span>
+                  </ion-item>
+                </ion-list>
             <ion-list>
               <ion-item class="inputs">
                 <ion-input placeholder="Email" type="email" name="email" #email="ngModel" ngModel required></ion-input>

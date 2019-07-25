@@ -1,5 +1,5 @@
 import { Component,ElementRef, OnInit, ViewChildren } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController,} from 'ionic-angular';
 // import { ViewmorePage } from '../viewmore/viewmore';
 // import { SearchPage } from '../search/search';
 import { ViewChild } from '@angular/core';
@@ -27,7 +27,7 @@ export class HomePage implements OnInit{
   icons = [
     {
       image: 'ios-briefcase',
-      name: 'job'
+      name: 'Jobs'
     },
     { image: 'pie' ,
     name: 'Programes'
@@ -74,7 +74,7 @@ export class HomePage implements OnInit{
   wifi;
   wifiRange;
   key;
-  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController,public hub:HubsProvider) {
+  constructor(public loadingCtrl: LoadingController, public navCtrl: NavController,public hub:HubsProvider,) {
     this.hub.checkAuthState().then(data => {
       if (data == true) {
         this.logInState = true;
