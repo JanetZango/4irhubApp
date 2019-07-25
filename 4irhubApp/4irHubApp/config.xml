@@ -103,9 +103,5 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.2">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-<<<<<<< HEAD
-    <plugin name="cordova-plugin-ionic-keyboard" spec="^2.1.3" />
-=======
     <engine name="android" spec="~7.1.4" />
->>>>>>> 58e61bd7f8d2b30a557220d2aae53e2f25a25682
 </widget>
