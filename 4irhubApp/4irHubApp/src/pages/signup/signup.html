@@ -21,8 +21,8 @@
           <div class="logininputdiv">
               <ion-list>
                   <ion-item class="inputs">
-                    <ion-input placeholder="Username" type="email" name="email" #email="ngModel" ngModel required></ion-input>
-                    <span class="help-block" style="color: red" *ngIf="!email.valid && email.touched" >Please enter your Username</span>
+                    <ion-input placeholder="Username" type="text" name="name" #name="ngModel" ngModel required></ion-input>
+                    <span class="help-block" style="color: red" *ngIf="!name.valid && name.touched" >Please enter your Username</span>
                   </ion-item>
                 </ion-list>
             <ion-list>
@@ -39,7 +39,7 @@
               </ion-item>
             </ion-list>
   
-            <button round block ion-button color="btn" (click)="SignUp(email.value,password.value)">SignUp</button>
+            <button round block ion-button color="btn" (click)="SignUp(email.value,password.value,name.value)">SignUp</button>
             <br>
             <button outline block round ion-button color="btn" (click)="switchlogin()">Login</button>
   

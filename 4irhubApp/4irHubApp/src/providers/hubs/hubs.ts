@@ -17,6 +17,8 @@ export class HubsProvider {
   stayLoggedIn;
   orgArray = new Array();
   orgNames = new Array();
+
+  profileArr = new Array();
   constructor(public ngzone: NgZone, public alertCtrl: AlertController,
     public loadingCtrl: LoadingController, public geo: Geolocation) {
     console.log('Hello HubsProvider Provider');
@@ -74,25 +76,30 @@ export class HubsProvider {
   getProfile() {
     return new Promise((accpt, rej) => {
       this.ngzone.run(() => {
-        firebase.auth().onAuthStateChanged(function (user) {
-          if (user) {
+        var user = firebase.auth().currentUser
             firebase.database().ref("Users/" + "/" + "App_Users/" + user.uid).on('value', (data: any) => {
               let details = data.val();
+              console.log(details)
               if (data.val() != null || data.val() != undefined) {
-                // console.log(details)
+               let obj ={
+                 name:details.name,
+                 downloadurl:details.downloadurl,
+
+               }
+               console.log(obj)
+               this.profileArr.push(obj)
+               console.log(this.profileArr)
                 accpt(details.downloadurl)
               }
               else {
                 details = null
               }
-
-              // console.log(details.downloadurl)
             })
-          } else {
+      
             // console.log('no user');
-          }
+          
         });
-      })
+
     })
   }
 
@@ -109,7 +116,7 @@ export class HubsProvider {
   }
 
 
-  Signup(email, password) {
+  Signup(email, password,name) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         let loading = this.loadingCtrl.create({
@@ -121,9 +128,10 @@ export class HubsProvider {
         return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
           var user = firebase.auth().currentUser
           firebase.database().ref("Users/App_Users/" + user.uid).set({
+            name:name,
             email: email,
             downloadurl: "../../assets/download.png",
-            cell: ""
+            contact: ""
           })
           var user = firebase.auth().currentUser;
           user.sendEmailVerification().then(function () {
@@ -627,5 +635,36 @@ export class HubsProvider {
       })
     })
   }
+
+
+   retrieve() {
+    let userID = firebase.auth().currentUser;
+    return firebase.database().ref("Users/" + "/" + "App_Users/" + userID.uid)
+  }
+
+  update(name, email, downloadurl, address, contact,DOB,age,hightschoolGradYear) {
+    // this.ProfileArr.length = 0;
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("Users/" + "/" + "App_Users/" + user.uid).update({
+          name: name,
+          email: email,
+          downloadurl: downloadurl,
+          address: address,
+          contact: contact,
+          DOB:DOB,
+          age:age,
+          highSchoolGradYear:hightschoolGradYear
+        });
+      })
+    })
+  }
+
+
+
+
+
+
 
 }

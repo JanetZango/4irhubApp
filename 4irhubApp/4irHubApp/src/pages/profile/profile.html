@@ -1,6 +1,6 @@
 <ion-content class="body">
   <div class="popover">
-    <button ion-button clear class="popoverOptions" color="custom">Edit Profile</button>
+    <button ion-button clear class="popoverOptions" color="custom" (click)="edit()">Edit Profile</button>
     <button ion-button clear class="popoverOptions" color="custom" (click)="logOut()">Sign Out</button>
   </div>
   <ion-fab top right>
@@ -16,7 +16,7 @@
       <div class="profile" *ngFor="let item of detailArray">
         <div class="gradient">
           <div class="username">
-            <h3>John Doe</h3>
+            <h3>{{item.name}}</h3>
           </div>
         </div>
         <img src="{{item.downloadurl}}" class="displayPicture" alt="">
@@ -28,23 +28,23 @@
                 <p class="subInfogram">
                   Mobile
                 </p>
-                <p>0813917127</p>
+                <p>{{item.contact}}</p>
                 <p class="subInfogram">
                   Residential Address
                 </p>
-                <p>4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819</p>
+                <p>{{item.address}}</p>
                 <p class="subInfogram">
                   Date of Birth
                 </p>
-                <p>30 March 1995</p>
+                <p>{{item.DOB}}</p>
                 <p class="subInfogram">
                   Age Today
                 </p>
-                <p>24</p>
+                <p>{{item.age}}</p>
                 <p class="subInfogram">
                   Highschool graduation Year
                 </p>
-                <p>2013</p>
+                <p>{{item.highSchoolGradYear}}</p>
           </ion-card>
 
           <p class="infogram" id="myReviews">My Reviews</p>

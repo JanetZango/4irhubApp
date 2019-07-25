@@ -30,7 +30,10 @@ export class EditprofilePage {
   dateOfBirth;
   d = 1;
   ageToday;
+  DOB;
   dateOfGraduation;
+  age;
+  highSchoolGradYear;
   constructor(public navCtrl: NavController, public navParams: NavParams,public hub :HubsProvider,public loadingCtrl: LoadingController, public alertCtrl: AlertController, public toastCtrl: ToastController) {
    
   }
@@ -107,7 +110,8 @@ export class EditprofilePage {
     loading.present();
 
       console.log('added to db');
-      this.hub.update(this.name, this.email, this.downloadurl,this.address,this.mobileNumber,this.dateOfBirth,this.ageToday,this.dateOfGraduation).then((data) => {
+
+      this.hub.update(this.name, this.email, this.downloadurl,this.address,this.contact,this.DOB,this.age,this.highSchoolGradYear).then((data) => {
         this.imageArr.push(data);
       });
       console.log(this.imageArr);

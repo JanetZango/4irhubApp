@@ -16,6 +16,8 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { SearchPage } from '../pages/search/search';
 import { ViewmorePage } from '../pages/viewmore/viewmore';
 import { OnboardingPage } from '../pages/onboarding/onboarding';
+import { EditprofilePage } from '../pages/editprofile/editprofile';
+
 
 
 @NgModule({
@@ -28,7 +30,8 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
     SignupPage,
     SearchPage,
     ViewmorePage,
-    OnboardingPage
+    OnboardingPage,  
+      EditprofilePage
   ],
   imports: [
     BrowserModule,
@@ -44,7 +47,8 @@ import { OnboardingPage } from '../pages/onboarding/onboarding';
     SignupPage,
     SearchPage,
     ViewmorePage,
-    OnboardingPage
+    OnboardingPage,
+    EditprofilePage
   ],
   providers: [
     StatusBar,

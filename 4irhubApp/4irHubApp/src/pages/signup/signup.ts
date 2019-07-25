@@ -30,12 +30,12 @@ export class SignupPage {
   }
 
 
-  SignUp(email,password) {
+  SignUp(email,password,name) {
     if(email == "" || password== "" || email == null || password == null ){
       console.log('error')
     }
     else{
-      this.hub.Signup(email,password).then(() => {
+      this.hub.Signup(email,password,name).then(() => {
         const alert = this.alertCtrl.create({
           cssClass: "myAlert",
           subTitle: "We have sent you a link on your email, Please verify your email",

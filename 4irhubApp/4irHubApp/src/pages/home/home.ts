@@ -57,6 +57,7 @@ export class HomePage implements OnInit{
   services = new Array();
   programmes = new Array();
   getOrgArry = new Array();
+  profArr = new Array();
   alltypes = new Array();
   lat = -26.2620;
   name;
@@ -79,9 +80,11 @@ export class HomePage implements OnInit{
       if (data == true) {
         this.logInState = true;
         this.hub.getProfile().then((data: any) => {
+          console.log(data)
           this.img = data.downloadurl;
           this.CurrentName = data.name;
           console.log(this.CurrentName)
+          console.log(this.img)
         })
       }
       else if (data == false) {
