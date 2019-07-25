@@ -32,9 +32,9 @@ export class HomePage implements OnInit{
     { image: 'pie' ,
     name: 'Programes'
   },
-    { image: 'wifi',
-    name: 'Wi-Fi Hotspot'
-  },
+  //   { image: 'wifi',
+  //   name: 'Wi-Fi Hotspot'
+  // },
     { image: 'ios-people', 
     name: 'Services'
   },
