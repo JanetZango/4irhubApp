@@ -42,4 +42,13 @@ page-viewmore {
         padding-top: 6%;
         color: #000000;
     }
+    .propic{
+        height: 30px;
+        width: 30px;
+        border-radius: 50px;
+        object-fit: cover;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
 }
