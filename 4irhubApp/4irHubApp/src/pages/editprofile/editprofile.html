@@ -1,0 +1,102 @@
+
+<ion-content padding class="content">
+  <ion-fab top left>
+    <button class="theFab" ion-fab mini icon-only clear (click)="GoToProfile()">
+      <ion-icon class="arrow" name="arrow-back" id="mark"></ion-icon>
+    </button>
+  </ion-fab>
+  <ion-fab top right>
+    <button class="theFab" ion-fab mini icon-only clear color="primary" (click)="uploadPicture()">
+      <ion-icon name="checkmark"class="arrow"></ion-icon>
+    </button>
+  </ion-fab>
+
+  <div class="round">
+    <label for="file">
+    <img class="picture" [src]="downloadurl" imageViewer>
+    </label>
+  </div>
+  <div class="fileChooser">
+    <h1>{{name}}</h1>
+    <div>
+      <label for="file" id="cam">
+        <ion-icon class="Add"  md="md-create-circle"></ion-icon>
+      </label>
+      <input id="file" type="file" accept="image/*" (change)="insertpic($event)">
+    </div>
+  </div>
+  <br>
+
+  <div class="list">
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="person"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="name" [(ngModel)]="name" placeholder="Enter name"></ion-input>
+    </ion-item><br>
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="logo-reddit"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="dateOfBirth" [(ngModel)]="DOB" placeholder="Date of Birth"></ion-input>
+    </ion-item><br>
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="information-circle"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="ageToday" [(ngModel)]="age" placeholder="Age Today"></ion-input>
+    </ion-item><br>
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="school"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="dateOfGraduation" [(ngModel)]="highSchoolGradYear" placeholder="Highschool Graduation Year"></ion-input>
+    </ion-item><br>
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="call"></ion-icon>
+      </ion-label>
+      <ion-input type="tel" [value]="mobileNumber" [(ngModel)]="contact" placeholder="Mobile"></ion-input>
+    </ion-item><br>
+    <ion-item no-lines class="item">
+      <ion-label>
+        <ion-icon name="home"></ion-icon>
+      </ion-label>
+      <ion-input type="text" [value]="address" [(ngModel)]="address" placeholder="Physical address"></ion-input>
+    </ion-item><br>
+    <ion-item class="item" no-lines class="item">
+      <ion-label>
+        <ion-icon name="mail"></ion-icon>
+      </ion-label>
+      <ion-input type="email" disabled [value]="email" [(ngModel)]="email" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <br>
+    <!-- <button ion-button (click)="uploadImage()">upload</button> -->
+  </div>
+
+  <!-- <ion-card class="infoCard" padding>
+    <p class="subInfogram">Email</p>
+    <p>{{item.email}}</p>
+    <p class="subInfogram">
+      Mobile
+    </p>
+    <p>0813917127</p>
+    <p class="subInfogram">
+      Residential Address
+    </p>
+    <p>4877 Ugago Street Protea Glen Ext 3 Johannesburg 1819</p>
+    <p class="subInfogram">
+      Date of Birth
+    </p>
+    <p>30 March 1995</p>
+    <p class="subInfogram">
+      Age Today
+    </p>
+    <p>24</p>
+    <p class="subInfogram">
+      Highschool graduation Year
+    </p>
+    <p>2013</p>
+</ion-card> -->
+</ion-content>
