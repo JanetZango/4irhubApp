@@ -40,7 +40,7 @@ export class HomePage implements OnInit{
   },
   ]
   catescrollist = ['Business', 'Relationships', 'Life', 'Love', 'Wealth']
-  img = "../../assets/download.png";
+  img = "../../assets/icon/user.png";
   logInState;
   CurrentName;
   userLocation = "Searching for location...";
@@ -90,7 +90,7 @@ export class HomePage implements OnInit{
         })
       }
       else if (data == false) {
-        this.img = "../../assets/download.png";
+        this.img = "../../assets/icon/user.png";
       }
     });
     // this.hub.getJobs().then((data:any)=>{
@@ -106,20 +106,20 @@ export class HomePage implements OnInit{
     //   console.log(this.services )
     // })
     this.hub.getAllOrganizations().then((data: any) => {
-      this.getOrgArry = data
-      this.name = data.name
-      this.address = data.address
+      this.getOrgArry = data;
+      this.name = data.name;
+      this.address = data.address;
       this.lat = data.lat;
-      this.background = data.background
+      this.background = data.background;
       this.category = data.category;
       this.downloadurl =data.downloadurl;
       this.downloadurlLogo = data.downloadurlLogo;
       this.wifi = data.wifi;
       this.long = data.long;
       this.email = data.email;
-      this.contact = data.contact
-      this.key = data.id
-      console.log(this.name)
+      this.contact = data.contact;
+      this.key = data.id;
+      console.log(this.name);
     })  // this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     // })
   }
@@ -462,7 +462,7 @@ export class HomePage implements OnInit{
       ]
     }
   ]
-
+​
   view(x){
     this.navCtrl.push(ViewPage,{obj:x})
   }
