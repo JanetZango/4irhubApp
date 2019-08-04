@@ -4,6 +4,7 @@ import { HubsProvider } from '../../providers/hubs/hubs';
 import { LoadingController } from "ionic-angular";
 import { AlertController } from "ionic-angular";
 import { SigninPage } from '../signin/signin';
+import { EditprofilePage } from '../editprofile/editprofile';
 
 declare var google;
 declare var firebase;
@@ -116,5 +117,9 @@ export class ProfilePage{
     }, (error) => {
       console.log(error.message);
     })
+  }
+
+  gottoEdit(){
+    this.navCtrl.push(EditprofilePage);
   }
 }

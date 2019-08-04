@@ -25,16 +25,17 @@ export class HomePage implements OnInit{
     { image: '../../assets/imgs/Austria_Parlament_Front.jpg' },
   ]
   icons = [
+    { image: 'ios-wifi',
+    name: 'Wi-Fi Hotspot '
+  },
     {
       image: 'ios-briefcase',
-      name: 'job'
+      name: 'Jobs'
     },
     { image: 'pie' ,
     name: 'Programes'
   },
-    { image: 'wifi',
-    name: 'Wi-Fi Hotspot'
-  },
+
     { image: 'ios-people', 
     name: 'Services'
   },
@@ -74,6 +75,7 @@ export class HomePage implements OnInit{
   wifi;
   wifiRange;
   key;
+  icon ="assets/img/location7.png"
   constructor(public loadingCtrl: LoadingController, public navCtrl: NavController,public hub:HubsProvider) {
     this.hub.checkAuthState().then(data => {
       if (data == true) {

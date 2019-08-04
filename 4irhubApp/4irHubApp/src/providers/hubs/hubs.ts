@@ -74,27 +74,19 @@ export class HubsProvider {
   getProfile() {
     return new Promise((accpt, rej) => {
       this.ngzone.run(() => {
-        firebase.auth().onAuthStateChanged(function (user) {
-          if (user) {
+      var user =firebase.auth().currentUser
             firebase.database().ref("Users/" + "/" + "App_Users/" + user.uid).on('value', (data: any) => {
               let details = data.val();
+              console.log(details)
               if (data.val() != null || data.val() != undefined) {
-                // console.log(details)
                 accpt(details.downloadurl)
               }
-              else {
-                details = null
-              }
-
-              // console.log(details.downloadurl)
+            
             })
-          } else {
-            // console.log('no user');
-          }
+          } )
         });
-      })
-    })
-  }
+    }
+  
 
 
   getUserLocation() {
@@ -123,7 +115,11 @@ export class HubsProvider {
           firebase.database().ref("Users/App_Users/" + user.uid).set({
             email: email,
             downloadurl: "../../assets/download.png",
-            cell: ""
+            contact: "",
+            address:"",
+            DOB:"",
+            age:"",
+            highSchoolGradYear:""
           })
           var user = firebase.auth().currentUser;
           user.sendEmailVerification().then(function () {
@@ -625,4 +621,87 @@ export class HubsProvider {
     })
   }
 
+
+  retrieve() {
+    let userID = firebase.auth().currentUser;
+    return firebase.database().ref("Users/" + "/" + "App_Users/" + userID.uid)
+  }
+
+  update(name, email, downloadurl, address, contact,DOB,age,hightschoolGradYear) {
+    // this.ProfileArr.length = 0;
+    return new Promise((pass, fail) => {
+      this.ngzone.run(() => {
+        var user = firebase.auth().currentUser
+        firebase.database().ref("Users/" + "/" + "App_Users/" + user.uid).update({
+          name: name,
+          email: email,
+          downloadurl: downloadurl,
+          address: address,
+          contact: contact,
+          DOB:DOB,
+          age:age,
+          highSchoolGradYear:hightschoolGradYear
+        });
+      })
+    })
+  }
+
+  getUserID() {
+    return new Promise((accpt, rejc) => {
+      this.ngzone.run(() => {
+        var userID = firebase.auth().currentUser
+        firebase.database().ref("Users/" + "/" + "App_Users").on("value", (data: any) => {
+          var profileDetails = data.val();
+          if (profileDetails !== null) {
+          }
+          console.log(profileDetails);
+          accpt(userID.uid);
+        }, Error => {
+          rejc(Error.message)
+        })
+      })
+    })
+  }
+
+
+  viewUserProfile() {
+    return new Promise((accpt, rejc) => {
+      this.ngzone.run(() => {
+        let user = firebase.auth().currentUser
+        firebase.database().ref("Users/" + "/" + "App_Users").on("value", (data: any) => {
+          let DisplayData = data.val();
+          let keys = Object.keys(DisplayData);
+          if (DisplayData !== null) {
+          }
+          for (var i = 0; i < keys.length; i++) {
+            this.storeImgur(DisplayData[keys[i]].downloadurl);
+            console.log(DisplayData[keys[i]].downloadurl)
+          }
+          accpt(DisplayData);
+        }, Error => {
+          rejc(Error.message)
+        })
+      })
+    })
+  }
+
+ url;
+  storeImgur(url) {
+    this.url = url;
+    console.log(this.url)
+  }
+
+
+  uploadProfilePic(pic, name) {
+    return new Promise((accpt, rejc) => {
+      this.ngzone.run(() => {
+        firebase.storage().ref(name).putString(pic, 'data_url').then(() => {
+          accpt(name);
+          console.log(name);
+        }, Error => {
+          rejc(Error.message)
+        })
+      })
+    })
+  }
 }

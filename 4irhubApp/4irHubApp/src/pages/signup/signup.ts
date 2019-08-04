@@ -56,4 +56,8 @@ export class SignupPage {
       })
     }
   }
+
+  switchlogin(){
+    this.navCtrl.push(SigninPage)
+  }
 }

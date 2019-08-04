@@ -1,4 +1,4 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar id="toolbar" color="primary">
       <ion-buttons left>
         <button ion-button icon-only color="royal" (click)="gotoProfile()">
@@ -11,11 +11,8 @@
           <ion-icon name="search"></ion-icon>
         </button>
       </ion-buttons>
-
     </ion-toolbar>
-    
-  
-  </ion-header>
+  </ion-header> -->
   
   <ion-toolbar id="toolbar1" color="primary" style="display: none;">
     <ion-searchbar  (input)="getItems($event)"></ion-searchbar>
@@ -26,16 +23,48 @@
       </ion-buttons>
   </ion-toolbar>
   
-  <ion-content class="backgroung" id="maincontent">
-    <div class="test1"></div>
-    <div class="test"></div>
+  <ion-content  class="backgroung" id="maincontent" >
+    <!-- <div class="test1"></div> -->
+    <div class="test">
+        <h4 padding-left  id="Welcome"> Welcome to <br> 4IRHub </h4>
+        <img padding-right class="topicon" src="../../assets/imgs/407893.png" alt="" srcset="">
+    </div>
+  
+  <div padding-top>
+      
+    <!-- <ion-grid>
+      <ion-row>
+        <ion-col col-2>
+          <ion-buttons left>
+            <button ion-button clear icon-only color="royal" (click)="gotoProfile()">
+              <ion-icon name="contact"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+        <ion-col col-8 align-self-center text-center>
+    <div class="loction">
+      <p>Soweto johannesburg</p>
+    </div>
+        </ion-col>
+        <ion-col col-2>
+          <ion-buttons text-right end>
+            <button ion-button clear icon-only color="royal" (click)="close()">
+              <ion-icon name="search"></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
   
     <h4 padding-right text-right> Hi Mxolisi </h4>
+    <div  padding-left  padding-right  padding-bottom >
+        <ion-searchbar  (input)="getItems($event)"></ion-searchbar>
+    </div>
   
     <ion-grid>
       <ion-row>
         <ion-col>
-          <h3 padding-left>Categories</h3>
+          <h4 padding-left>Categories</h4>
         </ion-col>
         <ion-col>
         
@@ -43,6 +72,66 @@
       </ion-row>
     </ion-grid>
     <div class="line"></div>
+    <ion-slides pager slidesPerView="1.1"  >
+
+        <ion-slide   *ngFor='let a of icons'>
+    <div class="topbackground">
+    <ion-grid>
+      <ion-row>
+        <!-- <ion-col>
+          <div class="cards">
+            <ion-card class="card21" id="card1" (click)='viewAll(a.name)'>
+              <ion-icon name="ios-briefcase" class="iconsizetop"></ion-icon>
+              <h6><b>Jobs</b></h6>
+            </ion-card>
+  
+          </div>
+        </ion-col> -->
+        <!-- <ion-col>
+          <div class="cards">
+            <ion-card class="card21"  id="card2" (click)='viewAll(a.name)'>
+              <ion-icon name="pie" class="iconsizetop"></ion-icon>
+              <h6><b>Programes</b></h6>
+            </ion-card>
+  
+          </div>
+        </ion-col> -->
+
+
+      </ion-row>
+    <ion-row>
+        <div class="cards">
+            <ion-card class="card21" padding id="card3" (click)='viewAll(a.name)'>
+             
+                <ion-icon name="{{a.image}}" class="iconsizeleft"></ion-icon>
+     <div class="textmove">
+        <h1 text-left ><b>{{a.name}}</b></h1>
+        <br>
+        <h6 text-left>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolorum commodi nam repellendus voluptas, dicta,  </h6>
+     </div>
+                   
+        <button text-left ion-button  item-left round small outline class="topbutton" (click)="view()">View</button>
+            </ion-card>
+  
+          </div>
+    </ion-row>
+    </ion-grid>
+  </div>
+  <br>
+</ion-slide >
+          </ion-slides>
+  
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col>
+        <h3 padding-left>What we offer</h3>
+      </ion-col> -->
+      <!-- <ion-col>
+        <h5 text-end padding-right padding-top (click)='viewAll()'>See All</h5>
+      </ion-col> -->
+    <!-- </ion-row>
+  </ion-grid> -->
+  <!-- <div class="line"></div>
     <div class="cards" id="cardsHide">
       <ion-slides class="slides" slidesPerView="2.5" centeredSlides="false">
         <ion-slide *ngFor='let a of icons'>
@@ -56,25 +145,35 @@
           <br>
         </ion-slide>
       </ion-slides>
-    </div>
+    </div> -->
   
   
   
   
   
-    <ion-grid>
+    <!-- <ion-grid>
       <ion-row>
         <ion-col>
           <h3 padding-left>What we offer</h3>
-        </ion-col>
+        </ion-col> -->
         <!-- <ion-col>
           <h5 text-end padding-right padding-top (click)='viewAll()'>See All</h5>
         </ion-col> -->
-      </ion-row>
-    </ion-grid>
-    <div class="line"></div>
-  
-    <ion-list  *ngFor="let a of getOrgArry">
+      <!-- </ion-row>
+    </ion-grid> -->
+    <!-- <div class="line"></div>
+    <ion-list no-lines class="bottomlist" >
+     
+        <ion-item class="list"  *ngFor="let a of getOrgArry">
+          <ion-avatar class="avatar"  item-start >
+              <ion-icon name="ios-people" class="iconsizeavatar"></ion-icon>
+          </ion-avatar>
+          <h2><b> {{a.name}}</b></h2>
+          <h3>{{a.background}}</h3>
+           
+        </ion-item>   -->
+        <!-- </ion-list> -->
+    <!-- <ion-list  *ngFor="let a of getOrgArry">
       <ion-card class="card2">
         <ion-item>
           <ion-thumbnail item-start>
@@ -85,17 +184,102 @@
           <button ion-button clear item-end (click)="view()">View</button>
         </ion-item>
       </ion-card>
-      </ion-list>
-  
+      </ion-list> -->
 
+  </div>
+  <div padding>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <h4 padding-left>Near me </h4>
+        </ion-col>
+        <!-- <ion-col>
+          <h5 text-end padding-right padding-top (click)='viewAll()'>See All</h5>
+        </ion-col> -->
+      </ion-row>
+    </ion-grid>
+      <div class="line"></div>
+      <br>
+<div  *ngFor="let a of getOrgArry">
+    <ion-grid class="newmainlist">
+        <ion-row>
+          <ion-col col-3 align-self-center text-center>
+              <img  class="newavatar" src="{{a.downloadurlLogo}}">
+          </ion-col>
+          <ion-col col-9 align-self-center text-left>
+              <ion-item class="newlist" no-lines >
+              <h2><b>{{a.name}}</b></h2>
+              <h3>{{a.address}}</h3>
+              <h3>{{a.category}}</h3>
+              <div class="view" item-end item-bottom >
+                  <h3 align-self-center text-center id="viewtext">View</h3>
+                </div>
+              </ion-item>
+          </ion-col>
+          <!-- <ion-col col-1 align-self-center text-center>
+              <div class="view" item-end item-bottom >
+                  <h3 >View</h3>
+                </div>
+            </ion-col> -->
+        </ion-row>
+      </ion-grid>
+    </div>
   
-    <ion-fab bottom right>
+    </div>
+  
+    <!-- <ion-fab bottom right>
       <button ion-fab mini (click)='mapswitch()' class="mapfab">
         <ion-icon name="map"></ion-icon>
       </button>
   
-    </ion-fab>
+    </ion-fab> -->
   
+
+<!-- 
+<div class="newmainlist"  >
+
+      <img  class="newavatar" src="../../assets/imgs/Wallpaper.jpg">
+      
+    <ion-list no-lines>
+     
+      <ion-item class="newlist" >
+       
+        <h2><b> Soweto</b></h2>
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit.</h3>
+        <h3>Lorem ipsum dolor sit amet consectetur adipisicing </h3>
+         <div class="view" item-end item-bottom >
+           <h3 >View</h3>
+         </div>
+      </ion-item>  
+      </ion-list>
+
+
+
+</div>
+   -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   </ion-content>
   
   <!---------------------------------------------MAP page -------------------------------------------------------------->
