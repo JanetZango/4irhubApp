@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams,Keyboard} from 'ionic-angular';
 import { HubsProvider } from '../../providers/hubs/hubs';
 import { LoadingController } from "ionic-angular";
 import { AlertController } from "ionic-angular";
@@ -22,7 +22,7 @@ declare var firebase;
 export class SignupPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams,public hub :HubsProvider,public alertCtrl: AlertController,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController,private keyboard: Keyboard,) {
   }
 
   ionViewDidLoad() {
@@ -30,12 +30,12 @@ export class SignupPage {
   }
 
 
-  SignUp(email,password) {
+  SignUp(email,password,name) {
     if(email == "" || password== "" || email == null || password == null ){
       console.log('error')
     }
     else{
-      this.hub.Signup(email,password).then(() => {
+      this.hub.Signup(email,password,name).then(() => {
         const alert = this.alertCtrl.create({
           cssClass: "myAlert",
           subTitle: "We have sent you a link on your email, Please verify your email",

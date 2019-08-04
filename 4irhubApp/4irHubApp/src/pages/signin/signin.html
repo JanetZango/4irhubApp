@@ -9,12 +9,11 @@
     <div class="test1"></div>
     <div class="test"></div>
     <div class="left" padding>
-      <!-- <h2 text-center>Welcome please Login</h2> -->
-      <img class="logo" src="../../assets/imgs/407893.png">
-      <!--<h1 text-center >4IR HUB</h1>
-        <p text-center> Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt soluta iure, eos qui hic accusantium laboriosam dolore nisi? Nobis esse in adipisci repellat quo eum ipsa deserunt vitae quibusdam necessitatibus!</p> -->
+    
+      <img [hidden]="keyboard.isOpen()" class="logo" src="../../assets/imgs/407893.png">
+
       <div class="login">
-        <h1 text-center>LogIn</h1>
+        <h1 [hidden]="keyboard.isOpen()" text-center>LogIn</h1>
         <br>
         <div class="logininputdiv">
           <ion-list>

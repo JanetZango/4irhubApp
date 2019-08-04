@@ -1,5 +1,5 @@
 import { Component,ElementRef, OnInit, ViewChildren } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController,} from 'ionic-angular';
 // import { ViewmorePage } from '../viewmore/viewmore';
 // import { SearchPage } from '../search/search';
 import { ViewChild } from '@angular/core';
@@ -35,13 +35,12 @@ export class HomePage implements OnInit{
     { image: 'pie' ,
     name: 'Programes'
   },
-
     { image: 'ios-people', 
     name: 'Services'
   },
   ]
   catescrollist = ['Business', 'Relationships', 'Life', 'Love', 'Wealth']
-  img = "../../assets/download.png";
+  img = "../../assets/icon/user.png";
   logInState;
   CurrentName;
   userLocation = "Searching for location...";
@@ -58,6 +57,7 @@ export class HomePage implements OnInit{
   services = new Array();
   programmes = new Array();
   getOrgArry = new Array();
+  profArr = new Array();
   alltypes = new Array();
   lat = -26.2620;
   name;
@@ -80,43 +80,47 @@ export class HomePage implements OnInit{
     this.hub.checkAuthState().then(data => {
       if (data == true) {
         this.logInState = true;
-        this.hub.getProfile().then((data: any) => {
-          this.img = data.downloadurl;
-          this.CurrentName = data.name;
-          console.log(this.CurrentName)
+        this.hub.retrieve().on('value', (data: any) => {
+          let details = data.val();
+          console.log(details)
+          console.log(this.name)
+          this.name = details.name;
+          this.downloadurl = details.downloadurl;
+ 
+        
         })
       }
       else if (data == false) {
-        this.img = "../../assets/download.png";
+        this.img = "../../assets/icon/user.png";
       }
     });
-    this.hub.getJobs().then((data:any)=>{
-      this.alltypes = data
-      console.log(this.jobs)
-    })
-    this.hub.getPrograme().then((data:any)=>{
-      this.alltypes = data
-      console.log(this.programmes)
-    })
-    this.hub.getServices().then((data:any)=>{
-      this.alltypes = data;
-      console.log(this.services )
-    })
+    // this.hub.getJobs().then((data:any)=>{
+    //   this.alltypes = data
+    //   console.log(this.jobs)
+    // })
+    // this.hub.getPrograme().then((data:any)=>{
+    //   this.alltypes = data
+    //   console.log(this.programmes)
+    // })
+    // this.hub.getServices().then((data:any)=>{
+    //   this.alltypes = data;
+    //   console.log(this.services )
+    // })
     this.hub.getAllOrganizations().then((data: any) => {
-      this.getOrgArry = data
-      this.name = data.name
-      this.address = data.address
+      this.getOrgArry = data;
+      this.name = data.name;
+      this.address = data.address;
       this.lat = data.lat;
-      this.background = data.background
+      this.background = data.background;
       this.category = data.category;
       this.downloadurl =data.downloadurl;
       this.downloadurlLogo = data.downloadurlLogo;
       this.wifi = data.wifi;
       this.long = data.long;
       this.email = data.email;
-      this.contact = data.contact
-      this.key = data.id
-      console.log(this.name)
+      this.contact = data.contact;
+      this.key = data.id;
+      console.log(this.name);
     })  // this.hubs.getCurrentLocation(this.lat, this.long).then((radius: any) => {
     // })
   }
@@ -180,6 +184,7 @@ export class HomePage implements OnInit{
   }
   storeSer(data){
     this.serv = data;
+    console.log(data)
   }
   storeNames(){
     this.names = this.hub.getName();
@@ -191,13 +196,13 @@ export class HomePage implements OnInit{
       content: 'Please wait...',
     });
     this.loading.present();
-    this.hub.getJobs2().then((data1:any) =>{
+    this.hub.getJobs().then((data1:any) =>{
       this.storeJobs(data1);
     })
-    this.hub.getPrograme2().then((data:any) =>{
+    this.hub.getPrograme().then((data:any) =>{
       this.storeProgs(data)
     })
-    this.hub.getServices2().then((data:any)=>{
+    this.hub.getServices().then((data:any)=>{
       this.storeSer(data)
     })
     setTimeout(() => {
@@ -458,8 +463,8 @@ export class HomePage implements OnInit{
       ]
     }
   ]
-
-  view(){
-    this.navCtrl.push(ViewPage)
+​
+  view(x){
+    this.navCtrl.push(ViewPage,{obj:x})
   }
 }

@@ -42,7 +42,9 @@ export class ProfilePage{
     });
   }
 
-
+  edit(){
+    this.navCtrl.push(EditprofilePage)
+  }
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }

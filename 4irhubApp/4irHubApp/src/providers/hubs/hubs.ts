@@ -17,6 +17,8 @@ export class HubsProvider {
   stayLoggedIn;
   orgArray = new Array();
   orgNames = new Array();
+
+  profileArr = new Array();
   constructor(public ngzone: NgZone, public alertCtrl: AlertController,
     public loadingCtrl: LoadingController, public geo: Geolocation) {
     console.log('Hello HubsProvider Provider');
@@ -101,7 +103,7 @@ export class HubsProvider {
   }
 
 
-  Signup(email, password) {
+  Signup(email, password,name) {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         let loading = this.loadingCtrl.create({
@@ -113,6 +115,7 @@ export class HubsProvider {
         return firebase.auth().createUserWithEmailAndPassword(email, password).then((newUser) => {
           var user = firebase.auth().currentUser
           firebase.database().ref("Users/App_Users/" + user.uid).set({
+            name:name,
             email: email,
             downloadurl: "../../assets/download.png",
             contact: "",
@@ -348,7 +351,7 @@ export class HubsProvider {
                   var progObject = {
                     openDate: details2[k].openDate,
                     closeDate: details2[k].closeDate,
-                    progName: details2[k].progName,
+                    name: details2[k].progName,
                     progType: details2[k].progType,
                     progBackround: details2[k].progBackround,
                     benefits: details2[k].benefits,
@@ -359,6 +362,7 @@ export class HubsProvider {
                     contacts: details2[k].contacts,
                     img: details2[k].img,
                   }
+                  this.storeOrgNames(details2[k].name);
                   progs.push(progObject)
                   console.log(progs)
                 }
@@ -407,6 +411,7 @@ export class HubsProvider {
                     img: details2[k].img,
                     name : details2[k].name
                   }
+                  this.storeOrgNames(details2[k].name);
                   jobs.push(progObject)
                   console.log(jobs)
                 }
@@ -446,9 +451,10 @@ export class HubsProvider {
                     address: details2[k].address,
                     contacts: details2[k].contact,
                     img: details2[k].img,
-                    serviceName: details2[k].name,
+                    name: details2[k].name,
                     email: details2[k].email
                   }
+                  this.storeOrgNames(details2[k].name);
                   services.push(progObject)
                   console.log(services)
                 }
@@ -594,7 +600,7 @@ export class HubsProvider {
     return new Promise((resolve, reject) => {
       this.ngzone.run(() => {
         var user = firebase.auth().currentUser;
-        firebase.database().ref("services/" + user.uid).on("value", (data: any) => {
+        firebase.database().ref("services/").on("value", (data: any) => {
           if (data.val() != undefined) {
             var services = new Array();
             var details = data.val();

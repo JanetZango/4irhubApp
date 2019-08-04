@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { CallNumber } from '@ionic-native/call-number';
+import { EmailComposer } from '@ionic-native/email-composer';
 /**
  * Generated class for the ViewPage page.
  *
@@ -25,14 +27,14 @@ export class ViewPage {
   background;
   orgType = this.navParams.get('type');
   type = ''
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public emailComposer: EmailComposer, public callNumber: CallNumber) {
   }
   ionViewDidLoad() {
     console.log(this.data);
     this.background = this.data.background;
     this.img = this.data.img;
     this.name = this.data.name;
-    this.cell = this.data.contacts;
+    this.cell = this.data.contact;
     this.desc = this.data.desc;
     this.bene = this.data.benefits;
     this.address = this.data.address;
@@ -52,5 +54,29 @@ export class ViewPage {
       toggler.style.maxHeight = "40px";
       this.readMore = "read more"
     }
+  }
+
+  
+  call(cell) {
+    console.log(cell);
+
+    this.callNumber.callNumber(cell, true)
+      .then(res => console.log('Launched dialer!', res))
+      .catch(err => console.log('Error launching dialer', err));
+  }
+
+  Email(emails) {
+    let email = {
+      to: emails,
+      cc: [],
+      bcc: [],
+      attachment: [],
+      subject: '',
+      body: '',
+      isHtml: false,
+      app: 'Gmail'
+    };
+    // Send a text message using default options
+    this.emailComposer.open(email);
   }
 }
